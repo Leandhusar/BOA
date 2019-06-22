@@ -3,17 +3,15 @@ from reswords import *
 
 r = sr.Recognizer()
 
-audio = 'audio.wav'
-
-with sr.AudioFile(audio) as source:
-    audio = r.record(source)
-    print ('Done!')
+with sr.Microphone() as source:
+    print("Di algo")
+    audio = r.listen(source)
+    print("Procesando...")
 
 try:
-    text = r.recognize_google(audio)
-    print (text)
-    
-except Exception as e:
-    print (e)
+    texto = r.recognize_google(audio, language = 'es-SP')
+    print("Has dicho: ", texto)
+except:
+    pass
 
-identificar(text)
+identificar(texto)
