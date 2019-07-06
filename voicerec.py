@@ -1,5 +1,8 @@
 import speech_recognition as sr
+import voiceprocessing as voice
+import online
 
+#Esta funcion retorna como texto la entrada de voz
 def speak():
     record = sr.Recognizer()
 
@@ -18,7 +21,3 @@ def speak():
         entrada = 'Error de reconocimiento'
     
     return entrada
-
-#Prueba
-texto = speak()
-print(texto)
