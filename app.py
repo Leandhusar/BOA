@@ -97,9 +97,24 @@ def BAF(val_accion, val_objetivo):
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #GUI
 ventana = Tk()
+ventana.config(bg='#5f5f5f')
+ventana.geometry('150x210')
+ventana.resizable(width = False, height = False)
 
 # Enlezamos la función a la acción del botón
-Button(ventana, text = "Botón aburrido", command = botonAburrido).pack()
-Button(ventana, text = "¿En qué puedo ayudarte?", command = botonConcreto).pack()
+baburrido = Button(ventana, text = "Botón aburrido", command = botonAburrido)
+bconcreto = Button(ventana, text = "¿En qué puedo ayudarte?", command = botonConcreto)
+
+baburrido.config(bg = '#60b0f4')
+bconcreto.config(bg = '#60b0f4')
+
+
+image = PhotoImage(file = "imagen.png")
+label = Label(image = image)
+label.pack()
+
+
+baburrido.pack()
+bconcreto.pack()
 
 ventana.mainloop()
