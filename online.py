@@ -14,6 +14,7 @@ def videoConcreto(titulo):
     lista = titulo.split(' ')
     busqueda = "+".join(lista)
     navegador = webdriver.Chrome('chromedriver')
+    navegador.maximize_window()
     pagina = 'https://www.youtube.com/results?search_query=' + busqueda
     navegador.get(pagina)
 
@@ -93,9 +94,3 @@ def buscarNoticia():
     navegador = webdriver.Chrome('chromedriver')
     pagina = "https://news.google.com/?hl=es-419&gl=CO&ceid=CO:es-419"
     navegador.get(pagina)
-
-def BAF():
-    #Buscar en las acciones realizadas por el usuario -> crear un archivo de acciones
-    pass
-
-#juegoConcreto('juegos de plataforma')
