@@ -7,12 +7,6 @@ texto = speak()
 print(texto)
 """
 
-"""
-accion [0]
-objeto [1]
-print(filtrarSolicitud('boa quiero leer cincuenta sombras de gray'))
-"""
-
 #Agregar botones de entrada para solicitudes generales
 #funcionalidad de el BOTON ABURRIDO
 #... ... ...
