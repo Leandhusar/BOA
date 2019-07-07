@@ -6,13 +6,13 @@ acciones = {
 
 #Contiene los objetivos del usuario
 objetivos = {
-    'imagen':1, 'foto':1, 'pintura':1, 'video':2, 'musica':3, 
-    'cancion':3, 'libro':4, 'articulo':5, 'noticia':6, 'juego':7
+    'imagen':1, 'foto':1, 'pintura':1, 'video':2, 'música':3, 
+    'canción':3, 'libro':4, 'artículo':5, 'noticia':6, 'juego':7
 }
 
 #Estado inicial de la basua -> Elementos que no deben ser tomados en 
 #cuenta para realizar las búsquedas
-basura = ['boa', 'quiero']
+basura = ['Oye', 'quiero']
 accion = tuple(acciones.keys())
 objetivo = tuple(objetivos.keys())
 
@@ -25,7 +25,7 @@ for a in accion:
 #usuario solo si se invoca con 'boa'
 #Se retorna True si existe una solicitud del usuario
 def solicitado(entreda):
-    if entreda.find('boa') >= 0:
+    if entreda.find('Oye') >= 0:
         return True
     return False
 
@@ -37,6 +37,7 @@ def identificar(entrada):
     accion_usuario = ''
     objetivo_usuario = ''
 
+    print(entrada)
     if solicitado(entrada):
         accion_usuario = buscarAccion(entrada)
         objetivo_usuario = buscarObjetivo(entrada)
@@ -52,7 +53,7 @@ def filtrarSolicitud(entrada):
     print(solicitud)
     if solicitado(entrada):
         for palabra in solicitud:
-            if palabra == 'boa':
+            if palabra == 'Oye':
                 solicitud.remove(palabra)
                 break
         accion_usuario = buscarAccion(entrada)
