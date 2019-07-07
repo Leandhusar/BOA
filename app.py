@@ -2,6 +2,7 @@ from voicerec import speak
 from voiceprocessing import *
 from online import *
 from random import choice
+from tkinter import *
 
 """
 texto = speak()
@@ -18,8 +19,11 @@ def botonAburrido():
     componentes = identificar(texto)
     print(componentes)
 
+    if componentes[0] == None or componentes[1] == None:
+        valores = choice(seleccion_aleatoria)
+        BAF(valores[0], valores[1])
     #Verificar si se va a ver imagenes
-    if acciones[componentes[0]] == 1 and objetivos[componentes[1]] == 1:
+    elif acciones[componentes[0]] == 1 and objetivos[componentes[1]] == 1:
         buscarImagen()
     #Verificar si se va a ver un video
     elif acciones[componentes[0]] == 1 and objetivos[componentes[1]] == 2:
@@ -34,7 +38,7 @@ def botonAburrido():
     elif (acciones[componentes[0]] == 1 and objetivos[componentes[1]] == 5 or 
         acciones[componentes[0]] == 3 and objetivos[componentes[1]] == 5):
         buscarArticulo()
-    elif acciones[componentes[0]] == 5 and objetivos[componentes[1]] == 7:
+    elif acciones[componentes[0]] == 5 or objetivos[componentes[1]] == 7:
         buscarJuego()
     elif (acciones[componentes[0]] == 1 and objetivos[componentes[1]] == 6 or 
         acciones[componentes[0]] == 3 and objetivos[componentes[1]] == 6 or 
@@ -47,13 +51,13 @@ def botonAburrido():
 #Busquedas especificas  
 def botonConcreto():
     texto = speak()
-    componentes = identificar(texto)
+    componentes = filtrarSolicitud(texto)
     print(componentes)
 
     #Las busquedas de imagenes es mas restringida
     if acciones[componentes[0]] == 1 and 'imagen' in componentes[1]:
         imagenConcreta(componentes[1])
-    elif acciones[componentes[0]] == 1 or 'video' in componentes[1]:
+    elif acciones[componentes[0]] == 1 and 'video' in componentes[1]:
         videoConcreto(componentes[1])
     elif (acciones[componentes[0]] == 1 and 'libro' in componentes[1] or 
         acciones[componentes[0]] == 3):
@@ -70,24 +74,32 @@ def botonConcreto():
 def BAF(val_accion, val_objetivo):
     #Selecciona las actividades por ... ruleta?
     #Verificar si se va a ver imagenes
-    if acciones[val_accion] == 1 and objetivos[val_objetivo] == 1:
+    if val_accion == 1 and val_objetivo == 1:
         buscarImagen()
     #Verificar si se va a ver un video
-    elif acciones[val_accion] == 1 and objetivos[val_objetivo] == 2:
+    elif val_accion == 1 and val_objetivo == 2:
         buscarVideo()
     #verificar si se buscaran libros
-    elif (acciones[val_accion] == 1 and objetivos[val_objetivo] == 4 or 
-        acciones[val_accion] == 3 and objetivos[val_objetivo] == 4):
+    elif (val_accion == 1 and val_objetivo == 4 or 
+        val_accion == 3 and val_objetivo == 4):
         buscarLibro()
     #Verificar so
-    elif acciones[val_accion] == 2 and objetivos[val_objetivo] == 3:
+    elif val_accion == 2 and val_objetivo == 3:
         buscarMusica()
-    elif (acciones[val_accion] == 1 and objetivos[val_objetivo] == 5 or 
-        acciones[val_accion] == 3 and objetivos[val_objetivo] == 5):
+    elif (val_accion == 1 and val_objetivo == 5 or 
+        val_accion == 3 and val_objetivo == 5):
         buscarArticulo()
-    elif acciones[val_accion] == 5 and objetivos[val_objetivo] == 7:
+    elif val_accion == 5 and val_objetivo == 7:
         buscarJuego()
     else:
         buscarNoticia()
 
-botonAburrido()
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#GUI
+ventana = Tk()
+
+# Enlezamos la función a la acción del botón
+Button(ventana, text = "Botón aburrido", command = botonAburrido).pack()
+Button(ventana, text = "¿En qué puedo ayudarte?", command = botonConcreto).pack()
+
+ventana.mainloop()
