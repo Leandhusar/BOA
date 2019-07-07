@@ -57,4 +57,45 @@ def juegoConcreto(titulo):
     pagina = "https://store.steampowered.com/search/?term=" + busqueda
     navegador.get(pagina)
 
-juegoConcreto('juegos de plataforma')
+#Se realizan búsquedas que quedan a disposicion del usuario -> No definidas
+
+def buscarImagen():
+    navegador = webdriver.Chrome('chromedriver')
+    pagina = "https://wallhaven.cc/random?page=2"
+    navegador.get(pagina)
+
+def buscarVideo():
+    navegador = webdriver.Chrome('chromedriver')
+    pagina = "https://www.youtube.com"
+    navegador.get(pagina)
+
+def buscarMusica():
+    navegador = webdriver.Chrome('chromedriver')
+    pagina = "https://soundcloud.com"
+    navegador.get(pagina)
+
+def buscarLibro():
+    navegador = webdriver.Chrome('chromedriver')
+    pagina = "https://www.amazon.es/comprar-libros-español/b?ie=UTF8&node=599364031"
+    navegador.get(pagina)
+
+def buscarJuego():
+    navegador = webdriver.Chrome('chromedriver')
+    pagina = "https://store.steampowered.com"
+    navegador.get(pagina)
+
+def buscarArticulo():
+    navegador = webdriver.Chrome('chromedriver')
+    pagina = "https://es.wikipedia.org/wiki/Wikipedia:Portada"
+    navegador.get(pagina)
+
+def buscarNoticia():
+    navegador = webdriver.Chrome('chromedriver')
+    pagina = "https://news.google.com/?hl=es-419&gl=CO&ceid=CO:es-419"
+    navegador.get(pagina)
+
+def BAF():
+    #Buscar en las acciones realizadas por el usuario -> crear un archivo de acciones
+    pass
+
+#juegoConcreto('juegos de plataforma')
