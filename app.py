@@ -42,3 +42,28 @@ def botonAburrido():
         buscarNoticia()
     else:
         BAF()
+
+def botonConcreto():
+    texto = speak()
+    componentes = identificar(texto)
+    print(componentes)
+
+    #Busqueda de imagen
+    if acciones[componentes[0]] == 1 and 'imagen' in componentes[1]:
+        imagenConcreta(componentes[1])
+    elif acciones[componentes[0]] == 1 or 'video' in componentes[1]:
+        videoConcreto(componentes[1])
+    elif (acciones[componentes[0]] == 1 and 'libro' in componentes[1] or 
+        acciones[componentes[0]] == 3):
+        libroConcreto(componentes[1])
+    elif acciones[componentes[0]] == 2:
+        cancionConcreta(componentes[1])
+    elif acciones[componentes[0]] == 4:
+        busquedaConcreta(componentes[1])
+    elif acciones[componentes[0]] == 5:
+        juegoConcreto(componentes[1])
+    else:
+        print('No entendí')
+
+
+botonAburrido()
